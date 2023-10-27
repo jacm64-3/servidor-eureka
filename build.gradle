@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.17'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'com.google.cloud.tools.jib' version '3.4.0'
 }
 
 group = 'com.prueba.discovery'
@@ -35,4 +36,22 @@ dependencyManagement {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+jib{
+	from {
+		image = 'openjdk:11'
+		auth {
+			username = 'albertocastillo64'
+			password = 'dckr_pat_gIJjVZXil7QHazrcveAB5w6ThFM'
+		}
+	}
+	to {
+		image = "registry.hub.docker.com/albertocastillo64/servidor-eureka:${version}"
+		auth {
+			username = 'albertocastillo64'
+			password = 'dckr_pat_gIJjVZXil7QHazrcveAB5w6ThFM'
+		}
+	}
+
 }

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: servidor-eureka
+  config:
+    import: configserver:${SERVIDOR_CONFIGURACION_URL}
+    loadbalancer:
+      ribbon:
+        enabled: false
+
